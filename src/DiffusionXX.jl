@@ -1,5 +1,4 @@
 module DiffusionXX
-
-greet() = print("Hello World!")
+include("discrete/DiscreteModel.jl")
 
 end # module DiffusionXX
