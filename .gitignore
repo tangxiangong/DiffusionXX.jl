@@ -2,3 +2,4 @@
 Manifest.toml
 _test/
 docs/Manifest.jl
+.vscode
