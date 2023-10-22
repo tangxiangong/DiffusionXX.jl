@@ -5,13 +5,13 @@
 """
 struct RandomWalk2D
     step_num::Integer
-    start_point::Tuple{Real, Real}
+    start_point::NTuple{2, Real}
     step_size::Real
-    prob::Tuple{Real, Real, Real, Real}
-    function RandomWalk1D(step_num::Integer, start_point::Tuple{Real, Real}, step_size::Real, prob::Tuple{Real, Real, Real, Real})
+    prob::NTuple{4, Real}
+    function RandomWalk2D(step_num::Integer, start_point::NTuple{2, Real}, step_size::Real, prob::NTuple{4, Real})
         step_num > 0 || throw(DomainError("需为正整数"))
         step_size > 0 || throw(DomainError("需为正数"))
-        0 <= prob[1] <= 1 && 0 <= prob[2] <= 1 && 0 <= prob[3] <= 1 && 0 <= prob[4] <= 1 || throw(DomainError("概率需在 0 与 1 之间"))
+        all(p->0<=p<=1, prob) || throw(DomainError("概率需在 0 与 1 之间"))
         sum(prob) == 1 || throw(DomainError("概率之和需为 1"))
         return new(step_num, start_point, step_size, prob)
     end
@@ -20,7 +20,7 @@ end
 """
 外置构造函数
 """
-RandomWalk2D(step_num::Integer; start_point::Tuple{Real, Real}=(0, 0), step_size::Real=1, prob::Tuple{Real, Real, Real, Real}=(0.25, 0.25, 0.25, 0.25)) = RandomWalk1D(step_num, start_point, step_size, prob)
+RandomWalk2D(step_num::Integer; start_point::NTuple{2, Real}=(0, 0), step_size::Real=1, prob::NTuple{4, Real}=(0.25, 0.25, 0.25, 0.25)) = RandomWalk2D(step_num, start_point, step_size, prob)
 
 """
 输出函数

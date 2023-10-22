@@ -1,5 +1,5 @@
 module DiffusionXX
 include("Random/Random.jl")
-include("discrete/DiscreteModel.jl")
-include("continuous/CTRW.jl")
+include("DiscreteModel/DiscreteModel.jl")
+# include("ContinuousModel/CTRW.jl")
 end # module DiffusionXX
