@@ -1,26 +1,26 @@
-"""
-    RandomWalk3D(step_num, start_point, step_size, prob)
+# """
+#     RandomWalk3D(step_num, start_point, step_size, prob)
 
-三维随机游走
-"""
-struct RandomWalk3D
-    step_num::Integer
-    start_point::NTuple{3, Real}
-    step_size::Real
-    prob::NTuple{6, Real}
-    function RandomWalk3D(step_num::Integer, start_point::NTuple{3, Real}, step_size::Real, prob::NTuple{6, Real})
-        step_num > 0 || throw(DomainError("需为正整数"))
-        step_size > 0 || throw(DomainError("需为正数"))
-        all(p->0<=p<=1, prob) || throw(DomainError("概率需在 0 与 1 之间"))
-        sum(prob) ≈ 1 || throw(DomainError("概率之和需为 1"))
-        return new(step_num, start_point, step_size, prob)
-    end
-end
+# 三维随机游走
+# """
+# struct RandomWalk3D
+#     step_num::Integer
+#     start_point::NTuple{3, Real}
+#     step_size::Real
+#     prob::NTuple{6, Real}
+#     function RandomWalk3D(step_num::Integer, start_point::NTuple{3, Real}, step_size::Real, prob::NTuple{6, Real})
+#         step_num > 0 || throw(DomainError("需为正整数"))
+#         step_size > 0 || throw(DomainError("需为正数"))
+#         all(p->0<=p<=1, prob) || throw(DomainError("概率需在 0 与 1 之间"))
+#         sum(prob) ≈ 1 || throw(DomainError("概率之和需为 1"))
+#         return new(step_num, start_point, step_size, prob)
+#     end
+# end
 
-"""
-外置构造函数
-"""
-RandomWalk3D(step_num::Integer; start_point::NTuple{3, Real}=(0, 0, 0), step_size::Real=1, prob::NTuple{6, Real}=(1/6, 1/6, 1/6, 1/6, 1/6, 1/6)) = RandomWalk3D(step_num, start_point, step_size, prob)
+# """
+# 外置构造函数
+# """
+# RandomWalk3D(step_num::Integer; start_point::NTuple{3, Real}=(0, 0, 0), step_size::Real=1, prob::NTuple{6, Real}=(1/6, 1/6, 1/6, 1/6, 1/6, 1/6)) = RandomWalk3D(step_num, start_point, step_size, prob)
 
 """
 输出函数
